@@ -12,7 +12,7 @@ type ProfileProps = {
 const Profile: React.FC<ProfileProps> = ({
   id,
 }: ProfileProps) => {
-  const [fetching, setFetching] = useState(false);
+  const [fetching] = useState(false);
 
   return (
     <PanelWrapper id={id} fetching={fetching}>

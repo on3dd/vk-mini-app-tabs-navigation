@@ -10,7 +10,7 @@ type ClipsProps = {
 };
 
 const Clips: React.FC<ClipsProps> = ({ id }: ClipsProps) => {
-  const [fetching, setFetching] = useState(false);
+  const [fetching] = useState(false);
 
   return (
     <PanelWrapper id={id} fetching={fetching}>

@@ -29,18 +29,16 @@ const Index: React.FC = () => {
   const history = useHistory();
 
   const pathname = useMemo(() => {
-    console.log('location.pathname', location.pathname);
-
     return location.pathname;
   }, [location.pathname]);
+
+  const activeStory = useMemo(() => {
+    return pathname.split('/').slice(1)[0];
+  }, [pathname]);
 
   const onClick = useCallback(
     (evt: SyntheticEvent<HTMLElement>) => {
       const path = evt?.currentTarget?.dataset?.story;
-
-      console.log('path', path);
-      console.log('pathname', pathname);
-
       return path ? history.push(path) : undefined;
     },
     [history],
@@ -48,7 +46,7 @@ const Index: React.FC = () => {
 
   return (
     <Epic
-      activeStory={pathname}
+      activeStory={activeStory}
       tabbar={
         <Tabbar>
           <TabbarItem
@@ -95,15 +93,15 @@ const Index: React.FC = () => {
         </Tabbar>
       }
     >
-      <NewsPanel id="/news" />
+      <NewsPanel id="news" />
 
-      <ServicesPanel id="/services" />
+      <ServicesPanel id="services" />
 
-      <MessagesPanel id="/messages" />
+      <MessagesPanel id="messages" />
 
-      <ClipsPanel id="/clips" />
+      <ClipsPanel id="clips" />
 
-      <ProfilePanel id="/profile" />
+      <ProfilePanel id="profile" />
     </Epic>
   );
 };

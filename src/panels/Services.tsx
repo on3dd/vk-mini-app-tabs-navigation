@@ -13,7 +13,7 @@ type ServicesProps = {
 const Services: React.FC<ServicesProps> = ({
   id,
 }: ServicesProps) => {
-  const [fetching, setFetching] = useState(false);
+  const [fetching] = useState(false);
 
   return (
     <Route

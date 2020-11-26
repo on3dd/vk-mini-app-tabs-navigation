@@ -10,7 +10,7 @@ type MessagesProps = {
 };
 
 const Messages: React.FC<MessagesProps> = ({ id }: MessagesProps) => {
-  const [fetching, setFetching] = useState(false);
+  const [fetching] = useState(false);
 
   return (
     <PanelWrapper id={id} fetching={fetching}>
