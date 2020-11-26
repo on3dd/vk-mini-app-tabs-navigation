@@ -29,6 +29,8 @@ const Index: React.FC = () => {
   const history = useHistory();
 
   const pathname = useMemo(() => {
+    console.log('location.pathname', location.pathname);
+
     return location.pathname;
   }, [location.pathname]);
 
@@ -37,6 +39,7 @@ const Index: React.FC = () => {
       const path = evt?.currentTarget?.dataset?.story;
 
       console.log('path', path);
+      console.log('pathname', pathname);
 
       return path ? history.push(path) : undefined;
     },
@@ -50,15 +53,15 @@ const Index: React.FC = () => {
         <Tabbar>
           <TabbarItem
             onClick={onClick}
-            selected={pathname === '/'}
-            data-story="/"
+            selected={pathname.includes('/news')}
+            data-story="/news"
             text="Новости"
           >
             <Icon28NewsfeedOutline />
           </TabbarItem>
           <TabbarItem
             onClick={onClick}
-            selected={pathname === '/services'}
+            selected={pathname.includes('/services')}
             data-story="/services"
             text="Сервисы"
           >
@@ -66,7 +69,7 @@ const Index: React.FC = () => {
           </TabbarItem>
           <TabbarItem
             onClick={onClick}
-            selected={pathname === '/messages'}
+            selected={pathname.includes('/messages')}
             data-story="/messages"
             label="12"
             text="Сообщения"
@@ -75,7 +78,7 @@ const Index: React.FC = () => {
           </TabbarItem>
           <TabbarItem
             onClick={onClick}
-            selected={pathname === '/clips'}
+            selected={pathname.includes('/clips')}
             data-story="/clips"
             text="Клипы"
           >
@@ -83,7 +86,7 @@ const Index: React.FC = () => {
           </TabbarItem>
           <TabbarItem
             onClick={onClick}
-            selected={pathname === '/profile'}
+            selected={pathname.includes('/profile')}
             data-story="/profile"
             text="Профиль"
           >
@@ -92,7 +95,7 @@ const Index: React.FC = () => {
         </Tabbar>
       }
     >
-      <NewsPanel id="/" />
+      <NewsPanel id="/news" />
 
       <ServicesPanel id="/services" />
 

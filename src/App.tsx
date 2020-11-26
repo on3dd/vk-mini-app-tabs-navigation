@@ -1,5 +1,9 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 
 import styled from 'styled-components';
 import bridge from '@vkontakte/vk-bridge';
@@ -35,6 +39,12 @@ const App: React.FC = () => {
   return (
     <StoreProvider>
       <BrowserRouter>
+        <Route
+          path="/"
+          exact
+          render={() => <Redirect to="/news" />}
+        />
+
         <Main>
           <Index />
         </Main>

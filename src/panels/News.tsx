@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Route, Redirect } from 'react-router-dom';
 
 import PanelWrapper from '../utils/wrappers/PanelWrapper';
 
@@ -13,12 +14,19 @@ const News: React.FC<NewsProps> = ({ id }: NewsProps) => {
   const [fetching, setFetching] = useState(false);
 
   return (
-    <PanelWrapper id={id} fetching={fetching}>
-      <Panel id={id}>
-        <PanelHeader>News</PanelHeader>
-        {/* <NewsComponent data={user} /> */}
-      </Panel>
-    </PanelWrapper>
+    <>
+      <Route
+        path="/news"
+        component={() => (
+          <PanelWrapper id={id} fetching={fetching}>
+            <Panel id={id}>
+              <PanelHeader>News</PanelHeader>
+              {/* <NewsComponent data={user} /> */}
+            </Panel>
+          </PanelWrapper>
+        )}
+      />
+    </>
   );
 };
 
