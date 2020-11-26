@@ -9,9 +9,6 @@ import { useLocation, useHistory } from 'react-router-dom';
 import Epic from '@vkontakte/vkui/dist/components/Epic/Epic';
 import Tabbar from '@vkontakte/vkui/dist/components/Tabbar/Tabbar';
 import TabbarItem from '@vkontakte/vkui/dist/components/TabbarItem/TabbarItem';
-import View from '@vkontakte/vkui/dist/components/View/View';
-import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
-import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
 
 import {
   Icon28NewsfeedOutline,
@@ -21,9 +18,11 @@ import {
   Icon28UserCircleOutline,
 } from '@vkontakte/icons';
 
-// import Home from './Home';
-// import Photos from './Photos';
-// import Photo from './Photo';
+import NewsPanel from './News';
+import ServicesPanel from './Services';
+import MessagesPanel from './Messages';
+import ClipsPanel from './Clips';
+import ProfilePanel from './Profile';
 
 const Index: React.FC = () => {
   const location = useLocation();
@@ -59,7 +58,7 @@ const Index: React.FC = () => {
           </TabbarItem>
           <TabbarItem
             onClick={onClick}
-            selected={pathname === 'services'}
+            selected={pathname === '/services'}
             data-story="/services"
             text="Сервисы"
           >
@@ -67,7 +66,7 @@ const Index: React.FC = () => {
           </TabbarItem>
           <TabbarItem
             onClick={onClick}
-            selected={pathname === 'messages'}
+            selected={pathname === '/messages'}
             data-story="/messages"
             label="12"
             text="Сообщения"
@@ -76,7 +75,7 @@ const Index: React.FC = () => {
           </TabbarItem>
           <TabbarItem
             onClick={onClick}
-            selected={pathname === 'clips'}
+            selected={pathname === '/clips'}
             data-story="/clips"
             text="Клипы"
           >
@@ -84,7 +83,7 @@ const Index: React.FC = () => {
           </TabbarItem>
           <TabbarItem
             onClick={onClick}
-            selected={pathname === 'profile'}
+            selected={pathname === '/profile'}
             data-story="/profile"
             text="Профиль"
           >
@@ -93,35 +92,15 @@ const Index: React.FC = () => {
         </Tabbar>
       }
     >
-      <View id="/" activePanel="/">
-        <Panel id="/">
-          <PanelHeader>Новости</PanelHeader>
-        </Panel>
-      </View>
+      <NewsPanel id="/" />
 
-      <View id="/services" activePanel="/services">
-        <Panel id="/services">
-          <PanelHeader>Сервисы</PanelHeader>
-        </Panel>
-      </View>
+      <ServicesPanel id="/services" />
 
-      <View id="/messages" activePanel="/messages">
-        <Panel id="/messages">
-          <PanelHeader>Сообщения</PanelHeader>
-        </Panel>
-      </View>
+      <MessagesPanel id="/messages" />
 
-      <View id="/clips" activePanel="/clips">
-        <Panel id="/clips">
-          <PanelHeader>Клипы</PanelHeader>
-        </Panel>
-      </View>
+      <ClipsPanel id="/clips" />
 
-      <View id="/profile" activePanel="/profile">
-        <Panel id="/profile">
-          <PanelHeader>Профиль</PanelHeader>
-        </Panel>
-      </View>
+      <ProfilePanel id="/profile" />
     </Epic>
   );
 };
